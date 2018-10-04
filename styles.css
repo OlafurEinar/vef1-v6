@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: 'Open Sans', helvetica, arial, sans-serif;
+  font-size: 16px;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1450px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* TODO taka ætti padding af main þegar komið er fyrir ofan hámarksbreidd */
+
+@media (min-width: 1490px) {
+  main {
+    padding: 0;
+  }
+
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.text {
+  margin-bottom: 20px;
+}
+
+.text p {
+  margin-bottom: 20px;
+}
+
+.image {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+
+/*~~tekið úr sýnislausn, bætt við height: 100%, tekið út background á .cards~~*/
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 470px;
+  max-height: 300px;
+  overflow: hidden;
+  height: 100%;
+
+  background-color: #fff;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+}
+
+.card__title {
+  margin-bottom: 20px;
+
+  font-size: 1.375em;
+  line-height: 1;
+  word-break: break-word;
+}
+
+.card__content {
+  display: flex;
+  flex: 1;
+}
+
+.card__text {
+  font-size: 1em;
+  line-height: 1.375;
+  overflow: auto;
+  word-break: break-word;
+}
+
+.card__image {
+  padding-left: 20px;
+  flex: 0 0 150px;
+}
+
+.card__img {
+  max-width: 100%;
+}
+
+.card__tags {
+  margin-top: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  list-style: none;
+}
+
+.card__tag {
+  font-weight: bold;
+  margin-right: 10px;
+}
+/* ^ tekið úr sýnislausn ^ */
+
+@media (max-width: 699px) {
+  .card {
+    max-width: none;
+    max-height: none;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .card__content {
+    flex-direction: column;
+  }
+
+  .card__text {
+    height: 100%;
+    margin-bottom: 1.25em;
+  }
+
+  .card__image {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 700px) {
+  .cards {
+    margin-bottom: 2.5em;
+  } 
+}

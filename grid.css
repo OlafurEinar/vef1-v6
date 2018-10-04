@@ -1,0 +1,101 @@
+:root {
+  --offset: 20px;
+  --max_width: 1450px;
+  --columns: 12;
+  --gutter: 20px;
+  --color: hsla(204, 80%, 72%, 0.25);
+  --repeating-width: calc(100% / var(--columns));
+  --column-width: calc((100% / var(--columns)) - var(--gutter));
+  --background-width: calc(100% + var(--gutter));
+  --background-columns: repeating-linear-gradient(
+    to right,
+    var(--color),
+    var(--color) var(--column-width),
+    transparent var(--column-width),
+    transparent var(--repeating-width)
+  );
+}
+
+/* Styling */
+html {
+  position: relative;
+}
+
+/* "grid.css skal notað til að láta efni falla rétt að grind" 
+grid kafli því færður úr styles.css yfir í grid.css*/
+
+/* grid fyrir efni, setja þarf upp í html */
+
+.grid {
+  max-width: 1450px;
+}
+
+.grid__row {
+  display: flex;
+  flex-direction: column;
+  margin-left: -10px;
+  margin-right: -10px;
+  flex-wrap: wrap; /*bætt við af nemanda*/
+}
+
+.grid__col {
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/* stíll upp að 700px */
+@media (max-width: 699px) {
+  .grid__col {
+    width: 100%;
+  }
+  .grid__col--card {
+    width: 100%;
+  }
+}
+
+/* stíll frá og með 700px */
+@media (min-width: 700px) {
+  .grid__col--card {
+    width: 50%;
+  }
+  .grid__row {
+    flex-direction: row;
+  } 
+}
+
+@media (max-width: 999px) {
+  .grid__col--reverse {
+    order: 2;
+  }
+}
+
+/* stíll frá og með 1000px */
+@media (min-width: 1000px) {
+  .grid__col--sm {
+    width: 50%;
+    margin-bottom: 2.5em;
+  }
+  .grid__row {
+    flex-direction: row;
+  }
+
+  .grid__col--card {
+    width: 33.333333333%;
+  }
+}
+
+html::before {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: calc(100% - (2 * var(--offset)));
+  max-width: var(--max_width);
+  min-height: 100vh;
+  content: '';
+  background-image: var(--background-columns);
+  background-size: var(--background-width) 100%;
+  z-index: 1000;
+  pointer-events: none;
+}
